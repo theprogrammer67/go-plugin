@@ -1,0 +1,45 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "label": "build plugin",
+            "type": "shell",
+            "command": "go build -buildmode=plugin -o ${workspaceRoot}/cmd/app/plugin1.so ${workspaceRoot}/cmd/plugin1/main.go",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "build app",
+            "type": "shell",
+            "command": "go build -o ${workspaceRoot}/cmd/app/app ${workspaceRoot}/cmd/app/main.go",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "build plugin debug",
+            "type": "shell",
+            "command": "go build -buildmode=plugin -gcflags='all=-N -l' -o ${workspaceRoot}/cmd/app/plugin1.so ${workspaceRoot}/cmd/plugin1/main.go",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build app debug",
+            "type": "shell",
+            "command": "go build -gcflags='all=-N -l' -o ${workspaceRoot}/cmd/app/app ${workspaceRoot}/cmd/app/main.go",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+	]
+}
